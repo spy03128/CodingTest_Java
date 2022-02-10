@@ -11,7 +11,6 @@ public class S5_1769 {
 
 		for (int i = 0; i < num.length(); i++) {
 			sum += num.charAt(i) - '0';
-
 		}
 
 		if (num.length() == 1)
