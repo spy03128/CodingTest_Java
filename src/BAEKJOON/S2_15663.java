@@ -3,7 +3,7 @@ package BAEKJOON;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class S3_15663 {
+public class S2_15663 {
 	static int N, M;
 	static int[] arr, result;
 	static boolean[] visited;
