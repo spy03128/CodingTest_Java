@@ -11,29 +11,26 @@ public class S2_5525 {
 		sc.nextLine();
 
 		int num = 0;
-
+		int result =0;
+		
 		String s = sc.nextLine();
 	
 
-		String sub = "";
-		for (int i = 0; i <= N; i++) {
-			sub += "I";
-			if (i != N)
-				sub += "O";
-		}
-
-		
-		for (int i = 0; i < s.length() - sub.length(); i++) {
-			if(s.charAt(i)=='O') continue;
-			if(s.charAt(i)=='I' && s.charAt(i+1)=='I') continue;
-			if (s.substring(i, i+sub.length()).equals(sub)) {
+		for(int i=0;i<M-2;i++) {
+			if(s.charAt(i)=='I' && s.charAt(i+1)=='O' && s.charAt(i+2)=='I') {
 				num++;
-				
+				if(num==N) {
+					result++;
+					num--;
+				}
+				i+=1;
+			}else {
+				num=0;
 			}
-
+			
 		}
-		System.out.println(num);
 		
+		System.out.println(result);
 		
 
 	}
