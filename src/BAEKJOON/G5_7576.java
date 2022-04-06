@@ -1,8 +1,10 @@
 package BAEKJOON;
 
+/*
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+
 
 public class G5_7576 {
 	static int map [][];
@@ -110,4 +112,91 @@ public class G5_7576 {
 		
 		
 	}
+}*/
+
+
+
+
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class G5_7576 {
+   static int N,M;
+   static int[][] arr;
+   static int[] dx = {1,-1,0,0};
+   static int[] dy = {0,0,-1,1};
+   static Queue<int[]> q = new LinkedList<>();
+   
+   static void bfs() {
+
+      while(!q.isEmpty()) {
+         int[] now = q.poll();
+         int x = now[0];
+         int y = now[1];
+         
+         for(int i = 0; i<4 ; i++) {
+            int nx = dx[i]+x;
+            int ny = dy[i]+y;
+            if(0<=nx && nx<M && 0<=ny && ny<N && arr[nx][ny]==0) {
+               q.offer(new int[] {nx,ny});
+               arr[nx][ny] = arr[x][y] +1;
+            }
+         }
+      }
+   }
+   
+   public static void main(String[] args) throws IOException {
+      
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+      StringTokenizer st = new StringTokenizer(br.readLine());
+      
+      N = Integer.parseInt(st.nextToken());
+      M = Integer.parseInt(st.nextToken());
+      
+      arr = new int[M][N];
+      
+      for(int i = 0; i<M; i++) {
+         st = new StringTokenizer(br.readLine());
+         for(int j = 0 ; j<N ; j++) {
+            arr[i][j] = Integer.parseInt(st.nextToken());
+         }
+      }
+      
+      for(int i = 0 ; i<M ; i++) {
+         for(int j = 0; j<N ; j++) {
+            if(arr[i][j]==1) q.offer(new int[] {i,j});
+         }
+      }
+      
+      bfs();
+      
+      int result = 0;
+      boolean check = false;
+      int max;
+      for(int i = 0; i<M ; i++) {
+         check = false;
+         max = Integer.MIN_VALUE;
+         for(int j = 0; j<N ;j++) {
+            if(arr[i][j]==0) {
+               check = true;
+               break;
+            }
+            else max = Math.max(max, arr[i][j]);
+         }
+         if(check) {
+            result = -1;
+            break;
+         }
+         else result = Math.max(result, max-1);
+      }
+      
+      System.out.println(result);
+      
+   }
 }
