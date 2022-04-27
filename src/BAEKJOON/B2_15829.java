@@ -13,15 +13,15 @@ public class B2_15829 {
 		long sum=0;
 		String s = sc.next();
 		String[] arr = s.split("");
-		
+		long pow = 1;
 		for(int i=0;i<L;i++) {
 			char c = arr[i].charAt(0);
 			long temp = c-'a'+1;
-			
-			long result = (long) (temp* Math.pow(31, i));
-			sum+=result;
+			sum += (temp*pow)%1234567891;
+			pow = (pow*31)%1234567891;
+	
 		}
-		sum = sum%1234567891;
-		System.out.println(sum);
+
+		System.out.println(sum%1234567891);
 	}
 }
