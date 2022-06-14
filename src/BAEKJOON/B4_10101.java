@@ -1,7 +1,8 @@
 
 package BAEKJOON;
 
-import java.util.*;
+import java.util.Scanner;
+
 public class B4_10101 {
 
 	public static void main(String[] args) {
